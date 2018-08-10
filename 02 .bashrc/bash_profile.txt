@@ -1,0 +1,41 @@
+# colors
+RESET="\[\017\]"
+NORMAL="\[\033[0m\]"
+RED="\[\033[31;1m\]"
+YELLOW="\[\033[33;1m\]"
+WHITE="\[\033[37;1m\]"
+GREEN="\[\033[32;1m\]"
+PURPLE="\[\033[95;1m\]"
+BLUE="\[\033[36;1m\]"
+
+# ps1 without face
+PS1="${RESET}${PURPLE}\u in \w\n>${BLUE} "
+
+#good aliases to have
+alias c="clear"
+alias rm="rm -i"
+
+# colored ls
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+alias ls="/bin/ls"
+
+# colored grep
+alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
+
+# colored man pages
+export LESS_TERMCAP_mb=$'\E[36;1m'
+export LESS_TERMCAP_md=$'\E[36;1m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# green smiley when successfull and red frown if failed
+SMILEY="${GREEN}:)${NORMAL}"
+FROWNY="${RED}:(${NORMAL}"
+SELECT="if [ \$? = 0 ]; then echo \"${SMILEY}\"; else echo \"${FROWNY}\"; fi"
+
+# ps1 with face, the last ps1 in the file is the open that gets seen in terminal
+PS1="${RESET}${PURPLE}\u in \w ${NORMAL} \`${SELECT}\` ${PURPLE}\n>${BLUE} "
